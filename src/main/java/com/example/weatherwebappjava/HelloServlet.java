@@ -22,9 +22,10 @@ public class HelloServlet extends HttpServlet {
         out.println("</body></html>");
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String inputData = request.getParameter("userInput");
-        System.out.println(inputData);
-        doGet(request, response);
+        // API Setup
+        String myApiKey = "d89da33fb3f74f43e37a2f1755a7d546";
+        String city = request.getParameter("city"); // Get the city from input
+        String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + myApiKey;
     }
 
     public void destroy() {
