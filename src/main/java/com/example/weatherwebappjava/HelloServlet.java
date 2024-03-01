@@ -3,6 +3,7 @@ package com.example.weatherwebappjava;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -28,12 +29,31 @@ public class HelloServlet extends HttpServlet {
         // API Setup
         String myApiKey = "d89da33fb3f74f43e37a2f1755a7d546";
         String city = request.getParameter("city"); // Get the city from input
+        InputStreamReader streamReader = getInputStreamReader(city, myApiKey);
+
+        // Store the data that is read
+        StringBuilder responseContent = new StringBuilder();
+
+        // Scan the data from the reader line by line
+        Scanner scanner = new Scanner(streamReader);
+        while (scanner.hasNext()) {
+            responseContent.append(scanner.nextLine());
+        }
+        scanner.close();
+        System.out.println(responseContent);
+    }
+
+    private static InputStreamReader getInputStreamReader(String city, String myApiKey) throws IOException {
         String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + myApiKey;
 
         // Integrate API
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // Establishing connection
         connection.setRequestMethod("GET"); // Get the data with the connection
+
+        // Read data from network
+        InputStream inputStream = connection.getInputStream();
+        return new InputStreamReader(inputStream);
     }
 
     public void destroy() {
