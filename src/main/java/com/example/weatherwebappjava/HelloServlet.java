@@ -5,6 +5,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -40,7 +42,10 @@ public class HelloServlet extends HttpServlet {
             responseContent.append(scanner.nextLine());
         }
         scanner.close();
-        System.out.println(responseContent);
+
+        // Parse weather data from string to JSON
+        Gson gson = new Gson(); // Allows the JSON data into tree model
+        JsonObject jsonObject = gson.fromJson(responseContent.toString(), JsonObject.class);
     }
 
     private static InputStreamReader getInputStreamReader(String city, String myApiKey) throws IOException {
