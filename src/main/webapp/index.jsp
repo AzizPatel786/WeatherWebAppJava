@@ -18,7 +18,7 @@
     <div class="weatherIcon">
       <img src="" alt="Clouds" id="weather-icon">
       <h2>${temperature} °C</h2>
-      <input type="hidden" id="wc" value="${weatherCondition}"> </input>
+      <input type="hidden" id="wc" value=${weatherCondition}> </input>
     </div>
 
     <div class="cityDetails">
@@ -69,6 +69,15 @@
     case 'Haze':
       weatherIcon.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjld66Ia5g_hpBn3Impi3zzOBHqWkjQInGLxTb2uXksuCsrkQU8HjlVyLobEJEGg8fRSIxeFzldGEHUmWcaiZBwAcRy4dGDpFX1BjTSB56qmBjW5tEW3RSC9_mCuLU_a8RuXchxGY7Oc8HLLl-IfaDW19Z0ZJJfNae9tECXRIyEu7rmJ3da08z8cI-phw/s320/haze.png";
       break;
+    case 'Smoke':
+      weatherIcon.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjld66Ia5g_hpBn3Impi3zzOBHqWkjQInGLxTb2uXksuCsrkQU8HjlVyLobEJEGg8fRSIxeFzldGEHUmWcaiZBwAcRy4dGDpFX1BjTSB56qmBjW5tEW3RSC9_mCuLU_a8RuXchxGY7Oc8HLLl-IfaDW19Z0ZJJfNae9tECXRIyEu7rmJ3da08z8cI-phw/s320/haze.png";
+      break;
+  }
+  // Check if the invalidCity attribute is set
+  var invalidCity = <%= request.getAttribute("invalidCity") %>;
+  if (invalidCity) {
+    window.alert("Invalid city entered. Please enter a valid city.");
+    window.location.href = "index.html";
   }
 </script>
 
