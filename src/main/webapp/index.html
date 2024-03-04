@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather Application</title>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>My Weather Application</h1>
-<form action="hello-servlet" method="post">
-    <label>
-        <input name="city">
-    </label>
-    <button>Submit!</button>
-</form>
+<div style="color:white; text-align:center">
+    <header>
+        <img src="images/weather-logo.png" style=" height: auto;width: 25%;filter: drop-shadow(10px 10px 10px black);">
+        <h1>Welcome to my Weather Web App</h1>
+        <h3>Made by Aziz Patel</h3>
+    </header>
+
+    <section class="main-content">
+        <h2>Technologies Used: </h2>
+        <p>HTML, CSS, JS, Java, Servlet, JSP, OpenWeather API</p>
+
+        <form action="hello-servlet" method="post" class="searchInput">
+            <input type="text" placeholder="Enter City Name" id="searchInput" value="" name="city"/>
+            <button id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </section>
+</div>
 </body>
 </html>

@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #0096c7; /* Deep Ocean Blue */
+    --secondary-color: #00bcd4; /* Light Ocean Blue */
+    --accent-color: #4fc3f7; /* Sky Blue */
+    --text-color: #ffffff; /* White Text */
+    --light-gray: #eeeeee; /* Light Gray */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.mainContainer {
+    width: 25rem;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.searchInput {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.searchInput input {
+    flex: 1;
+    height: 2rem;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--light-gray);
+    background-color: var(--secondary-color);
+}
+
+.searchInput input:focus {
+    border: 1px solid var(--accent-color);
+}
+
+.searchInput button {
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    border-radius: 50%;
+    margin-left: 0.4rem;
+    transition: all 0.3s ease;
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.searchInput button:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.weatherDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.weatherIcon img {
+    max-width: 100%;
+    width: 8rem;
+}
+
+.cityDetails,
+.date {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.windDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.windDetails > div {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.windDetails img {
+    max-height: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .mainContainer {
+        width: 100%;
+    }
+}
